@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        {% for item in blog %}
+{#            方法二#}
+            <a href="{% url 'firstBlog:search_details' search_id %}">{{ item.title }}</a>
+{#            <a href="search_id={{ item.id }}">{{ item.title }}</a>   方法一#}
+        作者：{{ item.author.name }}
+        <br/>
+        <pre>{{ item.content }}</pre>
+        {% endfor %}
+    </div>
+</body>
+</html>
