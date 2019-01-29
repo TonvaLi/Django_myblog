@@ -6,9 +6,10 @@
 </head>
 <body>
     <h2>{{ blog.title }}</h2>
-    作者：{{ blog.author.name }}
+    作者：{{ blog.author }}
     <br/>
-    <div>{{ blog.visits }}</div>
     <pre>{{ blog.content }}</pre>
+
+    <a href="{% url 'firstBlog:edit_page' blog.id %}">修改内容</a>
 </body>
 </html>

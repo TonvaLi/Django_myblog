@@ -19,3 +19,23 @@ def showBlog(request, search_id):
     context = {'blog':blog}
     res = tmp.render(context)
     return HttpResponse(res)
+
+def editPage(request, blog_id):
+    if str(blog_id) == '0':
+        return render(request, 'firstBlog/edit_page.html')
+    else:
+        blog = Blog.objects.get(pk=blog_id)
+        return render(request, 'firstBlog/edit_page.html', {'blog':blog})
+
+def submitPage(request):
+    title = request.POST.get('title', 'TITLE')
+    author = request.POST.get('author', 'AUTHOR')
+    content = request.POST.get('content', 'CONTENT')
+    Blog.objects.create(title=title, author=author, content =content)
+    blog = Blog.objects.all()
+    return render(request, 'firstBlog/bloglists.html',{'blog':blog})
+
+
+
+
+

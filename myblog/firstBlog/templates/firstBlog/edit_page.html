@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
+</head>
+<body>
+    <form action="{% url 'firstBlog:submit_page' %}" method="post">
+        {% csrf_token %}
+        {% if blog %}
+            <div>标题：
+            <input type="text" name="title" value="blog.title">
+        </div>
+        <div>
+            作者：
+            <input type="text" name="author" value="blog.author">
+        </div>
+        <div>
+            内容：
+            <input type="text" name="content" value="blog.content">
+        </div>
+        {% else %}
+            <div>标题：
+            <input type="text" name="title">
+        </div>
+        <div>
+            作者：
+            <input type="text" name="author">
+        </div>
+        <div>
+            内容：
+            <input type="text" name="content">
+        </div>
+        {% endif %}
+        <br/>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

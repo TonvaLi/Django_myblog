@@ -7,13 +7,13 @@
 <body>
     <div>
         {% for item in blog %}
-{#            方法二#}
-            <a href="{% url 'firstBlog:search_details' search_id %}">{{ item.title }}</a>
-{#            <a href="search_id={{ item.id }}">{{ item.title }}</a>   方法一#}
-        作者：{{ item.author.name }}
+            <a href="{% url 'firstBlog:blog_detail' search_id=item.id %}">{{ item.title }}</a>
+        作者：{{ item.author }}
         <br/>
-        <pre>{{ item.content }}</pre>
         {% endfor %}
+    </div>
+    <div>
+        <a href="{% url 'firstBlog:edit_page' 0 %}">新增内容</a>
     </div>
 </body>
 </html>
