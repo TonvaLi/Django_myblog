@@ -7,19 +7,21 @@
 <body>
     <form action="{% url 'firstBlog:submit_page' %}" method="post">
         {% csrf_token %}
+        <input type="hidden" name="blog_id" value="{{ blog.id }}">
         {% if blog %}
             <div>标题：
-            <input type="text" name="title" value="blog.title">
+            <input type="text" name="title" value={{ blog.title }}>
         </div>
         <div>
             作者：
-            <input type="text" name="author" value="blog.author">
+            <input type="text" name="author" value={{ blog.author }}>
         </div>
         <div>
             内容：
-            <input type="text" name="content" value="blog.content">
+            <input type="text" name="content" value={{ blog.content }}>
         </div>
         {% else %}
+            <input type="hidden" name="blog_id" value="{{ blog.id }}">
             <div>标题：
             <input type="text" name="title">
         </div>
